@@ -34,15 +34,11 @@ const absolute = a => {
   return Math.abs(a);
 };
 
-let quotient = (a, b) => {
+const quotient = (a, b) => {
   if (a <= 0 || b <= 0) {
-    quotient = Math.ceil(a / b);
-  } else {
-    quotient = Math.floor(a / b);
+    return Math.ceil(a / b);
   }
-  {
-    return quotient;
-  }
+  return Math.floor(a / b);
 };
 
 const remainder = (a, b) => {
