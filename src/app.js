@@ -9,6 +9,26 @@ const {
 
 const { add, subtract, multiply, divide, remainder } = require('./lib/numbers');
 
+const { negate, truthiness, isOdd, startsWith } = require('./lib/booleans');
+
+const {
+  getNthElement,
+  arrayToCSVString,
+  // csvStringToArray,
+  addToArray,
+  // addToArray2,
+  removeNthElement,
+  // numbersToStrings,
+  // uppercaseWordsInArray,
+  // reverseWordsInArray,
+  // onlyEven,
+  // removeNthElement2,
+  elementsStartingWithAVowel,
+  // removeSpaces,
+  // sumNumbers,
+  // sortByLastLetter,
+} = require('./lib/arrays');
+
 const app = express();
 
 app.use(express.json());
@@ -110,6 +130,58 @@ app.post('/numbers/remainder', (req, res) => {
   } else {
     res.status(200).send({ result: remainder(numberA, numberB) });
   }
+});
+
+// Below are the booleans tests
+
+app.post('/booleans/negate', (req, res) => {
+  res.status(200).send({ result: negate(req.body.value) });
+});
+
+app.post('/booleans/truthiness', (req, res) => {
+  res.status(200).send({ result: truthiness(req.body.value) });
+});
+
+app.get('/booleans/is-odd/:number', (req, res) => {
+  const number = parseInt(req.params.number);
+
+  if (isNaN(number)) {
+    res.status(400).send({ error: 'Parameter must be a number.' });
+  } else {
+    res.status(200).send({ result: isOdd(number) });
+  }
+});
+
+app.get('/booleans/:cat/starts-with/:c', (req, res) => {
+  if (req.params.c.length > 1) {
+    res.status(400).send({ error: 'Parameter "character" must be a single character.' });
+  } else {
+    res.status(200).send({ result: startsWith(req.params.c, req.params.cat) });
+  }
+});
+
+// Below are the arrays tests
+
+app.post('/arrays/element-at-index/:index', (req, res) => {
+  const index = parseInt(req.params.index);
+  res.status(200).send({ result: getNthElement(index, req.body.array) });
+});
+
+app.post('/arrays/to-string', (req, res) => {
+  res.status(200).send({ result: arrayToCSVString(req.body.array) });
+});
+
+app.post('/arrays/append', (req, res) => {
+  res.status(200).send({ result: addToArray(req.body.value, req.body.array) });
+});
+
+app.post('/arrays/starts-with-vowel', (req, res) => {
+  res.status(200).send({ result: elementsStartingWithAVowel(req.body.array) });
+});
+
+app.post('/arrays/remove-element', (req, res) => {
+  const remove = req.query.index;
+  res.status(200).send({ result: removeNthElement(remove, req.body.array) });
 });
 
 module.exports = app;
