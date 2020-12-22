@@ -73,7 +73,7 @@ app.get('/numbers/subtract/:firstNumber/from/:secondNumber', (req, res) => {
   }
 });
 
-// Below are the multiple tests
+// Below are the multiply tests
 
 app.post('/numbers/multiply', (req, res) => {
   const numberA = parseInt(req.body.a);
