@@ -15,6 +15,7 @@ const divide = (a, b) => {
 };
 
 const power = (a, b) => {
+  // eslint-disable-next-line no-restricted-properties
   return Math.pow(a, b);
 };
 

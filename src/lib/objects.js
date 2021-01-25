@@ -1,8 +1,8 @@
 const createPerson = (name, age) => {
-  let person = {
-    name: name,
-    age: age,
-  }
+  const person = {
+    name,
+    age,
+  };
   return person;
 };
 
@@ -15,55 +15,42 @@ const getProperty = (property, object) => {
 };
 
 const hasProperty = (property, object) => {
-  return (object[property] ? true : false);
+  return !!object[property];
 };
 
 const isOver65 = person => {
-  return (person.age > 65 ? true : false);
+  return person.age > 65;
 };
 
 const getAges = people => {
-  let ages = [];
+  const ages = [];
   for (i = 0; i < people.length; i++) {
     if (people[i].age) {
       ages.push(people[i].age);
     }
+  }
+  return ages;
 };
-return ages;
-}
 
 const findByName = (name, people) => {
-  return people.find( (person) => person.name === name);  
-  
-  // OR can use this answer below:
-
-  // for (i = 0; i < people.length; i++) {
-  //   if (people[i].name === name) {
-  //     console.log(people[i]);
-  //     return people[i];
-  //   }
-  // }
+  return people.find(person => person.name === name);
 };
 
 const findHondas = cars => {
-  return cars.filter( (honda) => honda.manufacturer === 'Honda');
+  return cars.filter(honda => honda.manufacturer === 'Honda');
 };
 
 const averageAge = people => {
-  return (people.reduce((total, currentUser) => total + currentUser.age, 0)) / people.length;
-
-  // OR can write it like below:
-  // let totalAge = people.reduce((total, currentUser) => total + currentUser.age, 0);
-  // return totalAge / people.length;
+  return people.reduce((total, currentUser) => total + currentUser.age, 0) / people.length;
 };
 
 const createTalkingPerson = (name, age) => {
-  let talkingPerson = {
-    name: name,
-    age: age,
+  const talkingPerson = {
+    name,
+    age,
     introduce: person => {
       return `Hi ${person}, my name is ${name} and I am ${age}!`;
-    }
+    },
   };
   return talkingPerson;
 };
@@ -78,5 +65,5 @@ module.exports = {
   findByName,
   findHondas,
   averageAge,
-  createTalkingPerson
+  createTalkingPerson,
 };

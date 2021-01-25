@@ -37,8 +37,8 @@ const uppercaseWordsInArray = strings => {
 };
 
 const reverseWordsInArray = strings => {
-  return strings.map(strings => {
-    return strings
+  return strings.Map(newString => {
+    return newString
       .split('')
       .reverse()
       .join('');
@@ -46,11 +46,11 @@ const reverseWordsInArray = strings => {
 };
 
 const onlyEven = numbers => {
-  return numbers.filter(numbers => numbers % 2 === 0);
+  return numbers.filter(newNumber => newNumber % 2 === 0);
 };
 
 const removeNthElement2 = (index, array) => {
-  copyArray = array.slice(0, array.length);
+  const copyArray = array.slice(0, array.length);
   copyArray.splice(index, 1);
   return copyArray;
 };
@@ -60,7 +60,7 @@ const elementsStartingWithAVowel = strings => {
   const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
   const items = [];
   for (let i = 0; i < vowels.length; i += 1) {
-    for (let j = 0; j < strings.length; j++) {
+    for (let j = 0; j < strings.length; j += 1) {
       if (strings[j].charAt(0) === vowels[i]) {
         items.push(strings[j]);
       }
@@ -68,12 +68,6 @@ const elementsStartingWithAVowel = strings => {
   }
   return items;
 };
-
-// OPTION 2//
-/* const elementsStartingWithAVowel = (strings) => {
-  let rex = /^[aeiou]/;
-  return strings.filter(strings => rex.test(strings));
-}; */
 
 const removeSpaces = string => {
   const reggy = string.replace(/\s/g, '');

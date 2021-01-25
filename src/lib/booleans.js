@@ -11,7 +11,6 @@ const both = (a, b) => {
 };
 
 const either = (a, b) => {
-  let or;
   if (a === true || b === true) {
     return true;
   }
@@ -73,29 +72,16 @@ const startsWith = (char, string) => {
   return char === string.charAt(0);
 };
 
-/* This should return TRUE if it has vowels */
-
 const containsVowels = string => {
   const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
   for (let i = 0; i < vowels.length; i += 1) {
-    /* LOOP START */
     const trueResult = string.includes(vowels[i]);
     if (trueResult === true) {
       return true;
     }
-  } /* LOOP END */
+  }
   return false;
 };
-
-// let containsVowels = (string) => {
-//   let vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
-//   for (i = 0; i < vowels.length; i += 1) {     /*LOOP START*/
-//     let trueResult = string.includes(vowels[i]);
-//     if (trueResult === true) {
-//       return true;
-//     }
-//   }; /*LOOP END*/
-//     return false;}
 
 const isLowerCase = string => {
   return string === string.toLowerCase();
